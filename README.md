@@ -2,10 +2,6 @@
 CHAD is just a CHATBOT made by a newbie
 
 
-Parlons clair et net : **CHAD V1**, c’est le tout premier niveau de ton chatbot, aka le **bébé bot**. Pas encore un génie, mais super bien né. Voici un petit topo de sa version actuelle :
-
----
-
 ## 🔍 **CHAD V1 – État actuel**
 
 ### ✅ **Ce qu’il sait faire (et il le fait bien)**
@@ -49,9 +45,6 @@ Parlons clair et net : **CHAD V1**, c’est le tout premier niveau de ton chatbo
 > Il a les bases solides. Il est propre, organisé, minimaliste.
 > C’est le **squelette d’un futur assistant IA**, et avec un peu de code, il va devenir un GigaCHAD. 🧠⚡
 
----
-
-Tu veux que je te file un **code clean de CHAD V1** (version propre prête à upgrade), ou on part direct sur le **prototype V2** ?
 
 
 # 🤖 Objectifs de CHAD V2
@@ -106,8 +99,3 @@ Une IA minimaliste mais ambitieuse. Voici la roadmap :
 - [ ] Organisation du code en fonctions/fichiers propres
 - [ ] Fichier `config.json` pour options de personnalisation
 - [ ] Prévoir des updates faciles (plugin, add-ons…)
-
----
-
-> 🧩 **Bonus idée** : CHAD V2 pourrait apprendre à mieux te connaître à chaque session, et devenir ton assistant personnel spiritualo-numérique 😏
-
