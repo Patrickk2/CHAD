@@ -1,6 +1,7 @@
 # CHAD
 CHAD is just a CHATBOT made by a newbie
-
+![Status](https://img.shields.io/badge/NLP-ALPHA-orange)
+![Version](https://img.shields.io/badge/version-v1.0--RainyBot-success)
 
 ## 🔍 **CHAD V1 – État actuel**
 
