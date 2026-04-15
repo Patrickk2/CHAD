@@ -1,102 +1,104 @@
 # CHAD
-CHAD is just a CHATBOT made by a newbie
-![RainyBot NLP](https://img.shields.io/badge/NLP-v0.1--alpha-orange)
-![CHAD](https://img.shields.io/badge/CHAD-v1.0--RainyBot-success)
 
-## 🔍 **CHAD V1 – État actuel**
+> CHAD is just a CHATBOT — a simple, extensible chatbot written in Python.
 
-### ✅ **Ce qu’il sait faire (et il le fait bien)**
+![Python](https://img.shields.io/badge/Python-3.x-blue)
+![License](https://img.shields.io/badge/License-Proprietary-orange)
+![Status](https://img.shields.io/badge/Status-Alpha-yellow)
 
-* **Réagir à des commandes simples** :
+CHAD is a lightweight command-line chatbot designed for simplicity and expandability. Built with a clean command dictionary pattern, it's easy to modify and extend with new features.
 
-  * `"bonjour"` → te salue
-  * `"test"` → répond s’il est vivant
-  * `"aide"` → te liste toutes les commandes dispo
-  * `"version"` → affiche sa version actuelle
-  * `"bye"`, `"rien"` → quitte proprement avec `sys.exit()`
-  * `"nettoie"` → efface l’écran (optionnel selon l’OS)
+## Features
 
-* **Boucle de dialogue** :
+- **Simple Command Interface** — Easy-to-use text commands
+- **Extensible Design** — Add new commands by editing the dictionary
+- **Clean Architecture** — Command logic centralized for easy maintenance
+- **Cross-Platform** — Works on Linux, macOS, and Windows
+- **No Dependencies** — Pure Python standard library
 
-  * Il reste actif tant que tu lui parles.
-  * Il comprend ce que tu tapes ligne par ligne.
+## Installation
 
-* **Structure propre** :
+```bash
+# Clone the repository
+git clone https://github.com/Patrickk2/CHAD.git
+cd CHAD
 
-  * Utilisation d’un **dictionnaire de commandes** pour centraliser la logique.
-  * Facile à maintenir et à agrandir.
+# Run the bot
+python bot.py
+```
+
+## Usage
+
+```
+$ python bot.py
+C'est quoi ton blaze ? Alice
+Alice : bonjour
+Salut ! Tu tombes bien, jitais en train de réfléchir à lunivers.
+Alice : aide
+
+=== Aide CHAD ===
+Voici les commandes que tu peux utiliser :
+- test
+- bonjour
+- aide
+- rien
+- bye
+- version
+- nettoie
+=================
+
+Alice : version
+CHAD est actuellement à la version 0.1 alpha.
+Alice : bye
+À plus dans le bus !
+```
+
+## Commands Reference
+
+| Command | Description |
+|---------|-------------|
+| `test` | Verify the bot is responding |
+| `bonjour` | Receive a greeting |
+| `aide` | Display available commands |
+| `version` | Show bot version |
+| `bye` / `rien` | Exit cleanly |
+| `nettoie` | Clear the terminal screen |
+
+## Adding Custom Commands
+
+Edit `bot.py` and add entries to the `commands` dictionary:
+
+```python
+def cmd_mycommand():
+    print("Your custom response here")
+
+commands = {
+    # ... existing commands
+    "mycommand": cmd_mycommand,
+}
+```
+
+## File Structure
+
+```
+CHAD/
+├── bot.py          # Main chatbot implementation
+├── nlp_module.py # NLP preprocessing utilities
+├── README.md     # This file
+├── LICENSE       # Proprietary license
+└── .github/      # GitHub workflows (CI/CD)
+```
+
+## Requirements
+
+- Python 3.6+
+
+No external packages required — uses only the Python standard library.
+
+## License
+
+Proprietary — All rights reserved. See [LICENSE](LICENSE) for details.
 
 ---
 
-### 🧱 **Ce qui lui manque (et ce qu’on va booster dans V2)**
-
-| Manque                         | Pourquoi c’est important                                                     |
-| ------------------------------ | ---------------------------------------------------------------------------- |
-| ❌ Pas de vraie "compréhension" | Il ne comprend pas les phrases libres (ex: "Quel temps fait-il à Conakry ?") |
-| ❌ Pas de mémoire               | Il oublie tout à chaque exécution                                            |
-| ❌ Pas connecté à Internet      | Impossible d’aller chercher des infos fraîches                               |
-| ❌ Réponses rigides             | Il répond toujours la même chose, sans humour ni style                       |
-| ❌ Aucune personnalité          | C’est un bot neutre, sans âme (snif 😢)                                      |
-
----
-
-### 🧪 **Résumé de CHAD V1**
-
-> 💬 **"Je suis CHAD, un petit bot simple mais prêt à évoluer."**
-> Il a les bases solides. Il est propre, organisé, minimaliste.
-> C’est le **squelette d’un futur assistant IA**, et avec un peu de code, il va devenir un GigaCHAD. 🧠⚡
-
-
-
-# 🤖 Objectifs de CHAD V2
-
-Version next-gen du chatbot CHAD – plus smart, plus connecté, plus vivant.  
-Une IA minimaliste mais ambitieuse. Voici la roadmap :
-
----
-
-## 🧠 1. IA Légère Intégrée
-- [ ] Utiliser un mini-modèle NLP (`DialoGPT-small`, logique maison…)
-- [ ] Réponses naturelles et un peu contextuelles
-- [ ] Ajouter une personnalité (drôle, calme, curieux…)
-
----
-
-## 🌍 2. Connexion à Internet
-- [ ] Accès à Wikipedia pour répondre à des questions
-- [ ] Intégration d’APIs (actualités, météo, etc.)
-- [ ] Commande spéciale : `cherche [terme]`
-
----
-
-## 🧠💾 3. Mémoire
-### a) Mémoire Temporaire
-- [ ] Dictionnaire en session
-
-### b) Mémoire Persistante
-- [ ] Sauvegarde dans un fichier `.json`
-- [ ] Commandes :
-  - `souviens-toi [clé] : [valeur]`
-  - `rappelle-moi [clé]`
-  - `oublie [clé]`
-
----
-
-## 🛠️ 4. Système de Commandes Avancé
-- [ ] Commandes centralisées dans un dictionnaire dynamique
-- [ ] `help` pour afficher toutes les commandes
-- [ ] Réponses stylées aux erreurs ou commandes inconnues
-
----
-
-## 🎭 5. Personnalité et Style
-- [ ] Ton personnalisable (fun, formel, sage, etc.)
-- [ ] Réactions expressives (emojis, citations, blagues…)
-- [ ] Changement de mode à la volée : `mode thug`, `mode philosophe`...
-
----
-
-## 💡 6. Modularité
-- [ ] Organisation du code en fonctions/fichiers propres
-- [ ] Fichier `config.json` pour options de personnalisation
-- [ ] Prévoir des updates faciles (plugin, add-ons…)
+Coded with ☕ by Patrick
