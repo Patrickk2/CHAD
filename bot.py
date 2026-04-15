@@ -1,72 +1,57 @@
-#!/usr/bin/env python3
-import os
 import sys
+from utils.helpers import load_config, clear_screen
+from commands import registry
 
-"""
-Mini chatbot CHAD - version 0.1 alpha
-Commandes disponibles :
-- test      : vérifie le chat
-- bonjour   : salutation de CHAD
-- aide      : affiche ce message d'aide
-- rien      : termine la discussion
-- bye       : termine la discussion
-- version   : affiche la version du bot
-- nettoie   : nettoie l'écran
-"""
 
-def cmd_test():
-    print("Bonjour, je suis CHAD. Je suis encore en développement, donc pas la peine d’insister.")
-    sys.exit()
+class Bot:
+    def __init__(self):
+        self.config = load_config()
+        self.name = self.config["bot"]["name"]
+        self.username = None
+        self.settings = self.config.get("settings", {})
 
-def cmd_bonjour():
-    print("Salut ! Tu tombes bien, j’étais en train de réfléchir à l’univers.")
+    def normalize_input(self, text: str) -> str:
+        if not self.settings.get("case_sensitive", False):
+            text = text.lower()
+        if self.settings.get("trim_whitespace", True):
+            text = text.strip()
+        return text
 
-def cmd_aide():
-    # Affiche l'aide avec le dictionnaire des commandes
-    print("\n=== Aide CHAD ===")
-    print("Voici les commandes que tu peux utiliser :")
-    for cmd in commands:
-        print(f"- {cmd}")
-    print("=================\n")
+    def get_command(self, key: str):
+        return registry.get(key)
 
-def cmd_rien():
-    print("D'accord, je vais retourner dormir alors...")
-    sys.exit()
+    def handle_input(self, user_input: str) -> None:
+        key = self.normalize_input(user_input)
+        if not key:
+            return
+        cmd = self.get_command(key)
+        if cmd:
+            cmd.execute()
+        else:
+            registry["unknown"].execute()
 
-def cmd_bye():
-    print("À plus dans le bus !")
-    sys.exit()
+    def get_username(self) -> str:
+        if self.username:
+            return self.username
+        prompt = self.config["bot"].get("prompt", "Username: ")
+        self.username = input(prompt)
+        return self.username
 
-def cmd_version():
-    print("CHAD est actuellement à la version 0.1 alpha.")
+    def run(self):
+        clear_screen()
+        username = self.get_username()
+        print()
 
-def cmd_nettoie():
-    os.system('clear')
+        while True:
+            prompt = f"{username}: "
+            user_input = input(prompt)
+            self.handle_input(user_input)
 
-def cmd_unknown():
-    print("Frero, j’ai pas capté, tu peux répéter ?")
-
-# Mapping des commandes vers les fonctions
-commands = {
-    "test": cmd_test,
-    "bonjour": cmd_bonjour,
-    "aide": cmd_aide,
-    "rien": cmd_rien,
-    "bye": cmd_bye,
-    "version": cmd_version,
-    "nettoie": cmd_nettoie,
-}
 
 def main():
-    os.system('clear')
-    user = input("C'est quoi ton blaze ? ")
+    bot = Bot()
+    bot.run()
 
-    while True:
-        prompt = input(f"{user} : ")
-        key = prompt.lower().strip()
-        # Exécute la commande si elle existe, sinon la fonction unknown
-        commands.get(key, cmd_unknown)()
 
 if __name__ == "__main__":
     main()
-
